@@ -1,14 +1,4 @@
 function toArray(obj) {
-    let res = [];
-    for (let i in obj) {
-        if (obj.hasOwnProperty(i)) {
-            if ((typeof obj[i]) === 'object') {
-                res.push([i, toArray(obj[i])]);
-            } else {
-                res.push([i, obj[i]]);
-            }
-        }
-    }
-    console.log(res);
-    return res;
+    return Object.entries(obj).map(el => typeof el[1] === 'object' ? [el[0], toArray(el[1])] : el);
+
 }
